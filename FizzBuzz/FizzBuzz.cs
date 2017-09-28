@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FizzBuzz
 {
@@ -15,27 +11,22 @@ namespace FizzBuzz
             {
                 bool checkThree = DivThree(i);
                 bool checkFive = DivFive(i);
-                bool checkBoth = DivBoth(i);
+                bool checkBoth = DivThreeFive(i);
 
-                if (checkBoth == true)
+                string WhichString = PrintString(checkThree, checkFive, checkBoth);
+                if(WhichString!="Ignore")
                 {
-                    Console.WriteLine("FizzBuzz");
+                    Console.WriteLine(WhichString);
                 }
-                else if (checkThree == true)
-                   {
-                    Console.WriteLine("Fizz");
-                }
-                else if (checkFive == true)
-                   {
-                    Console.WriteLine("Buzz");
-                }
-               else
-               {
+                else
+                {
                     Console.WriteLine(i);
                 }
+
             }
             Console.ReadKey();
         }
+
 
         public static bool DivThree(int i)
         {
@@ -55,12 +46,12 @@ namespace FizzBuzz
             {
                 return true;
             }
-            else
             {
                 return false;
             }
         }
-        public static bool DivBoth(int i)
+
+        public static bool DivThreeFive(int i)
         {
             if (i % 5 == 0 & i % 3 == 0)
             {
@@ -70,6 +61,28 @@ namespace FizzBuzz
             {
                 return false;
             }
+        }
+
+
+        public static string PrintString(bool Three, bool Five, bool ThreeFive)
+        {
+            if (ThreeFive == true)
+            {
+                return "FizzBuzz";
+            }
+            else if (Three == true)
+            {
+                return "Fizz";
+            }
+            else if (Five == true)
+            {
+                return "Buzz";
+            }
+            else
+            {
+                return "Ignore";
+            }
+
         }
     }
 }
